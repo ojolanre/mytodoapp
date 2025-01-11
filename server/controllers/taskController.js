@@ -1,7 +1,7 @@
 const Task = require('../models/Task');
 
 // Get all tasks for the logged-in user
-exports.getTasks = async (req, res, next) => {
+const getTasks = async (req, res, next) => {
   try {
     console.log('Inside getTasks function');
 
@@ -23,7 +23,7 @@ exports.getTasks = async (req, res, next) => {
 };
 
 // Create a new task
-exports.createTask = async (req, res, next) => {
+const createTask = async (req, res, next) => {
   try {
     if (!req.user || !req.user.id) {
       console.error('User not authenticated');
@@ -50,7 +50,7 @@ exports.createTask = async (req, res, next) => {
 };
 
 // Update a task's state
-exports.updateTask = async (req, res, next) => {
+const updateTask = async (req, res, next) => {
   try {
     const { state } = req.body;
     const validStates = ['pending', 'completed', 'deleted'];
@@ -81,7 +81,7 @@ exports.updateTask = async (req, res, next) => {
 };
 
 // Delete a task
-exports.deleteTask = async (req, res, next) => {
+const deleteTask = async (req, res, next) => {
   try {
     console.log('Deleting Task ID:', req.params.id);
 
@@ -99,3 +99,7 @@ exports.deleteTask = async (req, res, next) => {
     res.render('tasks', { tasks: [], errorMessage: 'Error deleting task. Please try again.' });
   }
 };
+
+module.exports = {
+        getTasks, createTask, updateTask, deleteTask
+}

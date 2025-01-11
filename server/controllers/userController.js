@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
 // Register a new user
-exports.register = async (req, res, next) => {
+const register = async (req, res, next) => {
     try {
       const { username, password } = req.body;
   
@@ -29,7 +29,7 @@ exports.register = async (req, res, next) => {
   };  
 
 // Login a user
-exports.login = async (req, res, next) => {
+const login = async (req, res, next) => {
     try {
       const { username, password } = req.body;
   
@@ -72,4 +72,4 @@ exports.login = async (req, res, next) => {
     }
 };
 
-  
+  module.exports = { register, login}
